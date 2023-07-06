@@ -11,13 +11,11 @@ topics=[dnamen,vnamen,pnamen]
 
 for p in range(0,3):
     for name in topics[p]:
-        if not os.path.exists(topicstheme[p]+"/"+name):
-            os.makedirs(topicstheme[p]+"/"+name)
         t=np.loadtxt(path+files+name+".asc")
-        for i in range(0,19):
+        for i in range(0,20):
             y=    np.array(t[0 + i * 1024:+(i + 1) * 1024])
-            #x=np.delete(y,0,1)
-            np.save(topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy", y)
+            x=np.delete(y,0,1)
+            np.save(topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy", x)
 
 
 
