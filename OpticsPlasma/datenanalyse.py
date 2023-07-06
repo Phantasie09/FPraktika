@@ -30,7 +30,14 @@ for i in range(0,20):
     energy = (f + 1 / tau_neon * t)
     helper.append(energy)
 superduppermatrix=np.array(helper)
-plt.imshow(superduppermatrix.transpose(),interpolation='nearest')
+superduppermatrix=superduppermatrix.transpose()[::-1]
+superduppermatrix=superduppermatrix[:137]
+plt.imshow(superduppermatrix,interpolation='nearest')
+
+plt.xticks(np.array(range(20))*5)
+
+plt.yticks(range(i))
+
 """
 plt.plot(f)
 plt.plot(t)
