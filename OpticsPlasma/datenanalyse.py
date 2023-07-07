@@ -39,5 +39,5 @@ plt.plot(energy)
 """
 plt.ylabel("Output")
 plt.xlabel("Pixel")
-plt.legend(loc='lower right')
+#plt.legend(loc='lower right')
 plt.show()

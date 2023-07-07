@@ -17,7 +17,7 @@ for p in range(0,3):
             if t.size<=100:
                 raise Exception("Sorry, already done")
                 break
-            bet=t[288:372] #Pixel 289 bis 372
+            bet=t[289:714] #Pixel 289 bis 372
             transpose = bet.transpose()
             median = []
             for lol in transpose:
