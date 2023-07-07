@@ -21,7 +21,7 @@ for p in range(0,3):
             transpose = bet.transpose()
             median = []
             for lol in transpose:
-                kappa = sum(lol) / 255
+                kappa = sum(lol) / 425
                 median.append(kappa)
             newpath = topicstheme[p] + "/" + name + "/Image_time_" + str(i + 1) +"median"+ ".npy"
             np.save(newpath, median)

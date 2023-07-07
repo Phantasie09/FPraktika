@@ -29,14 +29,19 @@ for i in range(0,20):
     f=np.gradient(t)
     energy = (f + 1 / tau_neon * t)
     helper.append(energy)
+
 superduppermatrix=np.array(helper)
 superduppermatrix=superduppermatrix.transpose()[::-1]
-superduppermatrix=superduppermatrix[:137]
-plt.imshow(superduppermatrix,interpolation='nearest')
+superduppermatrix=superduppermatrix[:135]
 
-plt.xticks(np.array(range(20))*5)
 
-plt.yticks(range(i))
+plt.imshow(superduppermatrix, cmap='viridis', interpolation='nearest', aspect=0.2)
+#plt.pcolormesh( cmap='viridis', interpolation='nearest' )
+
+plt.xticks(np.array(range(20)),np.array(range(20))*5)
+plt.xticks(np.arange(0,20, step=2))
+#plt.yticks(np.array(range(i)/42))
+
 
 """
 plt.plot(f)
@@ -45,6 +50,6 @@ plt.plot(energy)
 #plt.plot(t,  label='theoretisch')
 """
 plt.ylabel("Output")
-plt.xlabel("Pixel")
+plt.xlabel("time/ns")
 #plt.legend(loc='lower right')
 plt.show()
