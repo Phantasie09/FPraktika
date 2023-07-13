@@ -49,6 +49,8 @@ ax1.set_title('grid and contour (%d points, %d grid points)'
 cntr1 = ax1.contourf(M, levels=10, cmap="RdBu_r")
 
 fig.colorbar(cntr1, ax=ax1)
+plt.ylabel("Output")
+plt.xlabel("time/ns")
 plt.show()
 
 
