@@ -1,5 +1,7 @@
 import numpy as np
 
+#Starter
+
 import os
 path="../OpticsPlasma/F407_backup"
 files="/7.05 TimKatharine/"
@@ -13,6 +15,8 @@ for p in range(0,3):
     for name in topics[p]:
         t=np.loadtxt(path+files+name+".asc")
         for i in range(0,20):
+            if not os.path.exists(topicstheme[p] + "/" + name):
+                os.makedirs(topicstheme[p] + "/" + name)
             y=    np.array(t[0 + i * 1024:+(i + 1) * 1024])
             x=np.delete(y,0,1)
             np.save(topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy", x)

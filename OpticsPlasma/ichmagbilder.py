@@ -19,9 +19,10 @@ p=0
 i=1
 name="2.1.10pa"
 localpath=topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy"
-t=np.load(localpath)
-bet=t[289:714]
+bet=np.load(localpath)
+#bet=bet[290:713] #289:714
 trans=bet.transpose()
+trans=trans[136:-2]
 spieg=trans[::-1]
 
 

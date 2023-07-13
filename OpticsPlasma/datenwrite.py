@@ -1,5 +1,5 @@
 import numpy as np
-
+#2
 path="../OpticsPlasma/F407_backup"
 files="/7.05 TimKatharinae/"
 dnamen=["2.1.10pa","2.1.20pa","2.1.40pa","2.1.60pa"]
@@ -17,8 +17,9 @@ for p in range(0,3):
             if t.size<=100:
                 raise Exception("Sorry, already done")
                 break
-            bet=t[289:714] #Pixel 289 bis 372
+            bet=t[290:713] #Pixel 289 bis 372
             transpose = bet.transpose()
+            transpose = transpose[136:-2]
             median = []
             for lol in transpose:
                 kappa = sum(lol) / 425
