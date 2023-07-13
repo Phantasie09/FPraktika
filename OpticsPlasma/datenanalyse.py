@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.ndimage as sci
 
 path="../OpticsPlasma/F407_backup"
 files="/7.05 TimKatharinae/"
@@ -32,19 +33,25 @@ for i in range(0,20):
 superduppermatrix=np.array(helper)
 superduppermatrix=superduppermatrix.transpose()[::-1]
 superduppermatrix=superduppermatrix[:137]
-plt.imshow(superduppermatrix,interpolation='nearest')
 
-plt.xticks(np.array(range(20))*5)
 
-plt.yticks(range(i))
+M=np.array(superduppermatrix)
+print(M.shape)
+sigma = 0.8
 
-"""
-plt.plot(f)
-plt.plot(t)
-plt.plot(energy)
-#plt.plot(t,  label='theoretisch')
-"""
-plt.ylabel("Output")
-plt.xlabel("Pixel")
-plt.legend(loc='lower right')
+M = sci.filters.gaussian_filter(M, sigma)
+M = sci.zoom(M, 3)
+fig, ax1 = plt.subplots(layout='constrained')
+ax1.contour(M, levels=10, linewidths=0.5, colors='k')
+ax1.set_title('grid and contour (%d points, %d grid points)'
+              )
+
+cntr1 = ax1.contourf(M, levels=10, cmap="RdBu_r")
+
+fig.colorbar(cntr1, ax=ax1)
 plt.show()
+
+
+
+
+

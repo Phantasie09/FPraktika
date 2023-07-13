@@ -16,7 +16,7 @@ for p in range(0,3):
             t=np.load(localpath)
 """
 p=0
-i=0
+i=5
 name="2.1.10pa"
 localpath=topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy"
 t=np.load(localpath)
