@@ -48,7 +48,7 @@ def werteAus(p,name):
                 linewidths=0.5, colors='k')
     ax1.set_title("grapfen")
     cntr1 = ax1.contourf(X,Y, M, levels=10,
-                         cmap="RdBu_r")
+                         cmap="RdYlBu") #inferno
 
     fig.colorbar(cntr1, ax=ax1)
     plt.ylabel("Distance/cm")
@@ -58,4 +58,4 @@ def werteAus(p,name):
 
     plt.close()
 
-
+werteAus(0,"2.1.10pa")

@@ -17,7 +17,7 @@ for p in range(0,3):
                 t = int(input("press 1 or 2 to run all to proceed else exit: "))
             if t==1:
                 print("weiter mit file: "+name)
-                #datenanalyse.werteAus(p, name=name)
+                datenanalyse.werteAus(p, name=name)
                 t=0
             elif t==2:
                 print("weiter mit file"+name)
