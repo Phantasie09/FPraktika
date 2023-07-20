@@ -16,18 +16,18 @@ for p in range(0,3):
             t=np.load(localpath)
 """
 p=0
-i=1
+i=5
 name="2.1.10pa"
 localpath=topicstheme[p]+"/"+name + "/Image_time_" + str(i + 1) + ".npy"
 bet=np.load(localpath)
 #bet=bet[290:713] #289:714
 trans=bet.transpose()
-trans=trans[136:-2]
+#trans=trans[0:-2]
 spieg=trans[::-1]
 
 
 
-plt.imshow(spieg,interpolation='nearest')
+plt.imshow(spieg,interpolation='nearest',cmap="RdYlBu")
 #plt.plot(t,  label='theoretisch')
 plt.xlabel("t/s")
 plt.ylabel("R(t)/V")

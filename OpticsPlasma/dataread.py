@@ -3,6 +3,7 @@ import numpy as np
 #Starter
 
 import os
+#1
 path="../OpticsPlasma/F407_backup"
 files="/7.05 TimKatharine/"
 dnamen=["2.1.10pa","2.1.20pa","2.1.40pa","2.1.60pa"]
