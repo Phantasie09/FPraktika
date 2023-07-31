@@ -21,7 +21,7 @@ for p in range(0,3):
                 t=0
             elif t==2:
                 print("weiter mit file"+name)
-                #datenanalyse.werteAus(p, name=name)
+                datenanalyse.werteAus(p, name=name)
             else:
                 print("exit")
                 exit()
