@@ -69,11 +69,12 @@ def werteAus(p,name):
     ax1.contour(X,Y,M_filter2, levels=10,
                 linewidths=0.5, colors='k')
     cntr1 = ax1.contourf(X,Y, M_filter2, levels=10,
-                         cmap="RdYlBu") #inferno
+                         cmap="inferno") #RdYlBu
     ax1.hlines(pos[0][0]*pixtomm,0,100,colors="black")
     fig.colorbar(cntr1, ax=ax1)
-    plt.ylabel("Distance/cm")
-    plt.xlabel("time/ns")
+    ax1.tick_params(bottom=True, top=True, left=True, right=True)
+    plt.ylabel("Distance [cm]")
+    plt.xlabel("Time [ns]")
     plt.show()
     fig.savefig('finalGraphs/'+topicstheme[p]+name+'.png')
     plt.close()
