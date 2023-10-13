@@ -1,10 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.ndimage as sci
-
+from matplotlib.backend_bases import MouseButton
+import matplotlib as mpl
+mpl.use('TkAgg')
 #3
 
-path="../OpticsPlasma/F407_backup"
+path= "OpticsPlasma/F407_backup"
 files="/7.05 TimKatharinae/"
 dnamen=["2.1.10pa","2.1.20pa","2.1.40pa","2.1.60pa"]
 vnamen=["2.1.350V","2.1.450V","2.1.550V","2.1.650V"]
@@ -15,6 +17,15 @@ topics=[dnamen,vnamen,pnamen]
 tau_neon=14.5*10**(-9)
 tau_h2=10.2*10**(-9)
 tau=[tau_h2,tau_h2,tau_neon]
+boocounter = False
+arrowsvis = []
+arrowdata =[]
+P1, P2 = [0.1, 0.2], [0.9, 0.5]
+
+
+
+
+
 def werteAus(p,name):
     helper=[]
     for i in range(0,20):
@@ -75,9 +86,54 @@ def werteAus(p,name):
     ax1.tick_params(bottom=True, top=True, left=True, right=True)
     plt.ylabel("Distance [cm]")
     plt.xlabel("Time [ns]")
+
+    def calculateslope():
+        for i in arrowdata:
+            slope= (i[1][1]-i[0][1])/(i[1][0]-i[0][0])
+            print(i[0][1])
+            print(slope)
+
+    def on_key(event):
+        if event.key == "x" and len(arrowsvis) != 0:
+            helper = arrowsvis.pop()
+            arrowdata.pop()
+            helper.remove()
+            plt.show()
+
+        if event.key == "p" and len(arrowdata) != 0:
+            calculateslope()
+
+
+    def drawarrow(event):
+        global P1, P2, boocounter, arrows
+        if event.button == MouseButton.LEFT:
+            if boocounter == False:
+                P1[0] = event.xdata
+                P1[1] = event.ydata
+                print("first")
+            else:
+                P2[0] = event.xdata
+                P2[1] = event.ydata
+                arrow = ax1.annotate("", xy=(P2[0], P2[1]), xytext=(P1[0], P1[1]),
+                                    arrowprops=dict(arrowstyle="->", color="k", connectionstyle=" arc3 "))
+                arrowsvis.append(arrow)
+
+                arrowdata.append([[P1[0],P1[1]],[P2[0],P2[1]]])
+                print(arrowdata)
+                print(f'data coords {event.xdata} {event.ydata},',
+                      f'pixel coords {event.x} {event.y}')
+
+            boocounter = not boocounter
+
+            plt.show()
+
+    binding_id = plt.connect('key_press_event', on_key)
+    plt.connect('button_press_event', drawarrow)
+
+
     plt.show()
-    fig.savefig('finalGraphs/'+topicstheme[p]+name+'.png')
-    plt.close()
+    #fig.savefig('finalGraphs/'+topicstheme[p]+name+'.png')
+
 
 
 werteAus(0,'2.1.10pa')

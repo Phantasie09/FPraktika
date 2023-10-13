@@ -1,6 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.ndimage as sci
 import datenanalyse
 
 path="../OpticsPlasma/F407_backup"
