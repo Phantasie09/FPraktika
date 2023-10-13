@@ -1,3 +1,4 @@
+import numpy
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.ndimage as sci
@@ -88,10 +89,14 @@ def werteAus(p,name):
     plt.xlabel("Time [ns]")
 
     def calculateslope():
+        slopesss=[]
         for i in arrowdata:
             slope= (i[1][1]-i[0][1])/(i[1][0]-i[0][0])
-            print(i[0][1])
+            slopesss.append(slope)
+
             print(slope)
+        print(np.std(slopesss))
+        print(np.mean(slopesss))
 
     def on_key(event):
         if event.key == "x" and len(arrowsvis) != 0:
