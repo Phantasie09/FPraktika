@@ -7,7 +7,9 @@ import matplotlib as mpl
 mpl.use('TkAgg')
 #3
 
-path= "OpticsPlasma/F407_backup"
+
+
+path= "F407_backup"
 files="/7.05 TimKatharinae/"
 dnamen=["2.1.10pa","2.1.20pa","2.1.40pa","2.1.60pa"]
 vnamen=["2.1.350V","2.1.450V","2.1.550V","2.1.650V"]
@@ -93,8 +95,15 @@ def werteAus(p,name):
         for i in arrowdata:
             slope= (i[1][1]-i[0][1])/(i[1][0]-i[0][0])
             slopesss.append(slope)
+            print(f'Slope Standt.  {np.std(slopesss)} ,',
+                  f'Mean Slope {np.mean(slopesss)}',f'Number of Grpahs {len(slopesss)}')
+            xI=(i[1][0]-i[0][0])
+            yI=(i[1][1]-i[0][1])
+            DeltayI=1.0
+            DeltaxI=2.0
 
-            print(slope)
+            Error= np.sqrt((DeltayI/xI)**2+ (DeltaxI*yI/(xI**2))**2 )
+            print(Error)
         print(np.std(slopesss))
         print(np.mean(slopesss))
 
@@ -142,4 +151,3 @@ def werteAus(p,name):
 
 
 werteAus(0,'2.1.10pa')
-
